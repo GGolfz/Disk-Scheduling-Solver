@@ -1,9 +1,11 @@
-let head = 35;
-let data = [2, 57, 199, 174, 20, 124, 6, 79, 61, 67, 119, 32, 175, 120];
-let after = 7;
-let after_data = [40, 139, 54, 144, 49, 84];
-let direction = "GOING IN";
-let n = 5;
+let head = 60;
+let data = [
+  195, 150, 100, 121, 194, 36, 63, 149, 197, 15, 124, 130, 188, 191, 166,
+];
+let after = 6;
+let after_data = [149, 200, 34, 162, 171, 26];
+let direction = "GOING OUT";
+let n = 6;
 
 const fifo = () => {
   let res = [...data, ...after_data];
@@ -58,10 +60,16 @@ const scan = () => {
   let res = [];
   let current_direction = direction;
   for (let i of temp_data) {
-    if (i <= temp_head) {
+    if (i < temp_head) {
       less_than.push(i);
-    } else {
+    } else if (i > temp_head) {
       more_than.push(i);
+    } else {
+      if (current_direction == "GOING IN") {
+        less_than.push(i);
+      } else {
+        more_than.push(i);
+      }
     }
   }
   less_than.sort((a, b) => b - a);
@@ -84,10 +92,16 @@ const scan = () => {
     }
   }
   for (let i of temp_after) {
-    if (i <= temp_head) {
+    if (i < temp_head) {
       less_than.push(i);
-    } else {
+    } else if (i > temp_head) {
       more_than.push(i);
+    } else {
+      if (current_direction == "GOING IN") {
+        less_than.push(i);
+      } else {
+        more_than.push(i);
+      }
     }
   }
   less_than.sort((a, b) => b - a);
@@ -122,10 +136,16 @@ const cscan = () => {
   let res = [];
   let current_direction = direction;
   for (let i of temp_data) {
-    if (i <= temp_head) {
+    if (i < temp_head) {
       less_than.push(i);
-    } else {
+    } else if (i > temp_head) {
       more_than.push(i);
+    } else {
+      if (current_direction == "GOING IN") {
+        less_than.push(i);
+      } else {
+        more_than.push(i);
+      }
     }
   }
   less_than.sort((a, b) => b - a);
@@ -152,10 +172,16 @@ const cscan = () => {
     }
   }
   for (let i of temp_after) {
-    if (i <= temp_head) {
+    if (i < temp_head) {
       less_than.push(i);
-    } else {
+    } else if (i > temp_head) {
       more_than.push(i);
+    } else {
+      if (current_direction == "GOING IN") {
+        less_than.push(i);
+      } else {
+        more_than.push(i);
+      }
     }
   }
   less_than.sort((a, b) => b - a);
@@ -191,17 +217,23 @@ const nstepScan = (n) => {
   let temp_head = head;
   while (temp_data.length > 0) {
     let nval = [];
-    for (let i = 0; i < n; i++) {
+    for (let i = 0; i < (temp_data.length >= n) ? n : temp_data.length; i++) {
       nval.push(temp_data[0]);
       temp_data.shift();
     }
     let less_than = [];
     let more_than = [];
     for (let i of nval) {
-      if (i <= temp_head) {
+      if (i < temp_head) {
         less_than.push(i);
-      } else {
+      } else if (i > temp_head) {
         more_than.push(i);
+      } else {
+        if (current_direction == "GOING IN") {
+          less_than.push(i);
+        } else {
+          more_than.push(i);
+        }
       }
     }
     less_than.sort((a, b) => b - a);
@@ -236,10 +268,16 @@ const fscan = () => {
   let res = [];
   let current_direction = direction;
   for (let i of temp_data) {
-    if (i <= temp_head) {
+    if (i < temp_head) {
       less_than.push(i);
-    } else {
+    } else if (i > temp_head) {
       more_than.push(i);
+    } else {
+      if (current_direction == "GOING IN") {
+        less_than.push(i);
+      } else {
+        more_than.push(i);
+      }
     }
   }
   less_than.sort((a, b) => b - a);

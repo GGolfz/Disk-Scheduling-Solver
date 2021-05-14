@@ -217,7 +217,8 @@ const nstepScan = (n) => {
   let temp_head = head;
   while (temp_data.length > 0) {
     let nval = [];
-    for (let i = 0; i < (temp_data.length >= n) ? n : temp_data.length; i++) {
+    let len = temp_data.length >= n ? n : temp_data.length;
+    for (let i = 0; i < len; i++) {
       nval.push(temp_data[0]);
       temp_data.shift();
     }

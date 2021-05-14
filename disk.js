@@ -1,8 +1,8 @@
-let head = 50;
-let data = [72, 77, 29, 35, 64, 199, 150, 166, 123, 56, 45, 9, 15, 31, 23, 74];
-let after = 5;
-let after_data = [88, 59, 12, 1];
-let direction = "GOING OUT";
+let head = 35;
+let data = [2, 57, 199, 174, 20, 124, 6, 79, 61, 67, 119, 32, 175, 120];
+let after = 7;
+let after_data = [40, 139, 54, 144, 49, 84];
+let direction = "GOING IN";
 let n = 5;
 
 const fifo = () => {
@@ -134,10 +134,12 @@ const cscan = () => {
     if (less_than.length == 0 && current_direction == "GOING IN") {
       less_than = [...more_than];
       less_than.sort((a, b) => b - a);
+      more_than = [];
     }
     if (more_than.length == 0 && current_direction == "GOING OUT") {
       more_than = [...less_than];
       more_than.sort((a, b) => a - b);
+      less_than = [];
     }
     if (current_direction == "GOING IN") {
       res.push(less_than[0]);
@@ -163,10 +165,12 @@ const cscan = () => {
     if (less_than.length == 0 && current_direction == "GOING IN") {
       less_than = [...more_than];
       less_than.sort((a, b) => b - a);
+      more_than = [];
     }
     if (more_than.length == 0 && current_direction == "GOING OUT") {
       more_than = [...less_than];
       more_than.sort((a, b) => a - b);
+      less_than = [];
     }
     if (current_direction == "GOING IN") {
       res.push(less_than[0]);
